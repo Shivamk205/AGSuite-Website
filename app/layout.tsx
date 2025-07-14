@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ClientLayout from './components/ClientLayout';
 
 export const metadata = {
   title: 'AGSuite - Cloud Solution Partner',
@@ -16,7 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="font-sans">
         <Navbar />
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
         <Footer />
       </body>
     </html>
