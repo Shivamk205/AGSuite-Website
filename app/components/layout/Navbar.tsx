@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import CampaignIcon from '@mui/icons-material/Campaign';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import InsightsIcon from '@mui/icons-material/Insights';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import WorkIcon from '@mui/icons-material/Work';
@@ -19,9 +18,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import StoreIcon from '@mui/icons-material/Store';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
-import PeopleIcon from '@mui/icons-material/People';
 import ComputerIcon from '@mui/icons-material/Computer';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions';
@@ -870,7 +867,7 @@ const Navbar = () => {
                 : 'text-white border border-amber-500 hover:bg-red-500'
             }`}
           >
-            Let's Talk
+            Let&apos;s Talk
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
               <path
                 fillRule="evenodd"

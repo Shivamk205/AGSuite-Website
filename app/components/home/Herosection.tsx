@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import './HeroVideo.css';
+import Image from 'next/image';
 
 const videos = [
   {
@@ -48,7 +49,7 @@ export default function HeroSection() {
     }
   }, [currentVideo]);
 
-  const { heading, title, src } = videos[currentVideo];
+  const { title, src } = videos[currentVideo];
 
   return (
     <section className="bg-gray-100 overflow-hidden h-[100dvh] min-h-max flex items-center relative">
@@ -74,7 +75,7 @@ export default function HeroSection() {
           onTimeUpdate={handleTimeUpdate}
         >
           <source src={src} type="video/mp4" />
-          <img src="/hero-bg.jpg" alt="Background fallback" />
+          <Image src="/hero-bg.jpg" alt="Background fallback" width={1920} height={1080} style={{ width: '100%', height: 'auto' }} />
         </video>
         <div className="hero-overlay" />
 
@@ -138,8 +139,8 @@ export default function HeroSection() {
             <div className="my-5 mb-10 flex flex-col items-start space-y-1 sm:space-y-0 sm:flex-row sm:items-center sm:space-x-5">
               <span className="text-white/80 text-2xl font-bold tracking-wide">Technology Partner</span>
               <div className="flex flex-row items-center space-x-3 sm:mt-0">
-                <img src="/oracle logo.png" alt="Oracle Logo" className="h-19 w-auto object-contain" />
-                <img src="/zohologo.png" alt="Zoho Logo" className="h-19 w-auto object-contain" />
+                <Image src="/oracle logo.png" alt="Oracle Logo" width={120} height={40} className="h-19 w-auto object-contain" />
+                <Image src="/zohologo.png" alt="Zoho Logo" width={120} height={40} className="h-19 w-auto object-contain" />
               </div>
             </div>
         </div>
