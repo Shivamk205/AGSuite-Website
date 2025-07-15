@@ -430,7 +430,7 @@ const Navbar = () => {
                 {item.title !== 'Solutions' && item.children.length > 0 && (
                   openDropdown === item.title && (
                     <div
-                      className="fixed left-0 right-0 top-20 w-screen bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200 transition-all duration-200 z-50"
+                      className="fixed left-0 right-0 top-20 w-screen bg-gradient-to-br from-orange-50 via-white to-red-100 backdrop-blur-md shadow-lg border-b border-gray-200 transition-all duration-200 z-50"
                     >
                       <div className="mx-auto max-w-[1600px] px-5 sm:px-10 md:px-12 lg:px-5 py-8">
                         {/* For Services, use a two-column layout: first column for heading, second for links */}
@@ -601,14 +601,14 @@ const Navbar = () => {
                             </div>
                           </div>
                         ) : item.title === 'Contact' ? (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {/* First column: Contact heading and description */}
                             <div className="p-6 flex flex-col items-start">
                               <h3 className="text-5xl font-bold text-red-500 mb-5">Contact Us</h3>
                               <p className="text-lg text-gray-500">Reach out for support, career opportunities, or to request a quote or consultation.</p>
                             </div>
-                            {/* Second column: Contact links and descriptions */}
-                            <div className="md:col-span-1 grid grid-cols-1 gap-4">
+                            {/* Second and third columns: Contact links and descriptions distributed */}
+                            <div className="md:col-span-2 grid grid-cols-2 gap-4">
                               {item.children.map((link: NavItem, i: number) => {
                                 let IconComponent = null;
                                 let desc = '';
@@ -669,7 +669,7 @@ const Navbar = () => {
                 {item.title === 'Solutions' && item.children.some(child => child.megaMenu) && (
                   openDropdown === 'Solutions' && (
                     <div
-                      className="hidden lg:block fixed left-0 right-0 top-20 w-screen bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200 transition-all duration-300 z-50"
+                      className="hidden lg:block fixed left-0 right-0 top-20 w-screen bg-gradient-to-br from-gray-50 via-gray-50 to-gray-50 backdrop-blur-md shadow-lg border-b border-gray-200 transition-all duration-300 z-50"
                     >
                       <div className="max-w-[1600px] mx-auto px-5 sm:px-10 md:px-12 lg:px-5 py-8 relative">
                         {/* Close Button */}

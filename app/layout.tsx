@@ -2,6 +2,7 @@ import './globals.css';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ClientLayout from './components/ClientLayout';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: 'AGSuite - Cloud Solution Partner',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </ClientLayout>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -54,6 +54,16 @@ export default function HeroSection() {
   return (
     <section className="bg-gray-100 overflow-hidden h-[100dvh] min-h-max flex items-center relative">
       {/* Background Video */}
+      {/* Top-right Corner Decoration - ensure above video */}
+      <div className="absolute top-0 z-1 pointer-events-none ">
+        <Image
+          src="/contentimage3.png"
+          alt="Corner Decoration"
+          width={500}
+          height={150}
+          className="opacity-15 -scale-x-100"
+        />
+      </div>
       <div className="absolute inset-0 w-full h-full z-0">
         <div
           className="hero-video-fallback"

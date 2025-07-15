@@ -13,9 +13,10 @@ export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col">
       <HeroSection />
+      <Counter/>
       <Content/>
       <Features />
-      <Counter/>
+    
       <CtaSection/>
       <TestimonialSection/>
 

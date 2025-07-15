@@ -67,8 +67,21 @@ const Features = () => {
   };
 
   return (
-    <section className="py-20 bg-cover bg-center bg-gradient-to-br from-pink-100 via-orange-50 to-gray-50">
-      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
+    <section className="relative overflow-hidden py-20 bg-gradient-to-br from-red-100 via-green-100 to-purple-100">
+      {/* Grid Background Overlay */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            `linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 0px),` +
+            `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 0px)`,
+          backgroundSize: '290px 180px',
+        }}
+      />
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
         {/* Title and image side-by-side */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-6">
           <div className="space-y-4 max-w-xl">
@@ -78,7 +91,6 @@ const Features = () => {
             <p className="text-gray-700">Discover powerful integrations that scale with you.</p>
           </div>
 
-          {/* Image beside heading */}
           <div className="w-full max-w-900 h-64 md:h-50 relative mr-13">
             <Image 
               src="/banner2.png"
@@ -91,7 +103,7 @@ const Features = () => {
 
         {/* Features Section */}
         <div className="mt-16 flex flex-col md:flex-row gap-8 xl:gap-10">
-          {/* Left hover items */}
+          {/* Left Column */}
           <div className="md:w-96 lg:w-[26rem] space-y-5 flex flex-col mt-15 mx-5">
             {features.map((feature) => (
               <motion.div
@@ -110,20 +122,13 @@ const Features = () => {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="cursor-pointer p-4 space-y-3 rounded-lg"
               >
-                <motion.h2 
-                  className="text-xl font-semibold text-gray-900"
-                  animate={{ color: hoveredFeature === feature.id ? "#111827" : "#111827" }}
-                >
+                <motion.h2 className="text-xl font-semibold text-gray-900">
                   {feature.title}
                 </motion.h2>
-                <motion.p 
-                  className="text-gray-700 text-sm"
-                  animate={{ color: hoveredFeature === feature.id ? "#374151" : "#374151" }}
-                >
+                <motion.p className="text-gray-700 text-sm">
                   {feature.description}
                 </motion.p>
-                
-                {/* Extended information that appears on hover */}
+
                 <AnimatePresence>
                   {hoveredFeature === feature.id && (
                     <motion.div
@@ -204,7 +209,7 @@ const Features = () => {
             ))}
           </div>
 
-          {/* Right image & description */}
+          {/* Right Preview Panel */}
           <motion.div 
             className="flex-1 flex flex-col items-center justify-center relative rounded-lg overflow-hidden p-6"
             layout
