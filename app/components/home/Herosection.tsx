@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import './HeroVideo.css';
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 
 const videos = [
   {
@@ -27,6 +28,8 @@ export default function HeroSection() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const { ref: sectionRef, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const handleVideoEnd = () => {
     setCurrentVideo((prev) => (prev + 1) % videos.length);
@@ -52,8 +55,8 @@ export default function HeroSection() {
   const { title, src } = videos[currentVideo];
 
   return (
-    <section className="bg-gray-100 overflow-hidden h-[100dvh] min-h-max flex items-center relative">
-      {/* Background Video */}
+    <section ref={sectionRef} className="bg-gray-100 overflow-hidden h-[100dvh] min-h-max flex items-center relative">
+      {/* Background Video or Placeholder */}
       {/* Top-right Corner Decoration - ensure above video */}
       <div className="absolute top-0 z-1 pointer-events-none ">
         <Image
@@ -73,22 +76,48 @@ export default function HeroSection() {
         {currentVideo === 0 && (
           <div className="absolute inset-0 bg-black opacity-50 z-10 pointer-events-none" />
         )}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop={false}
-          muted
-          playsInline
-          preload="auto"
-          className="hero-video"
-          onEnded={handleVideoEnd}
-          onTimeUpdate={handleTimeUpdate}
-        >
-          <source src={src} type="video/mp4" />
-          <Image src="/hero-bg.jpg" alt="Background fallback" width={1920} height={1080} style={{ width: '100%', height: 'auto' }} />
-        </video>
+        {/* Lazy-load video only when in view */}
+        {inView ? (
+          <>
+            {!videoLoaded && (
+              <Image
+                src="/hero-bg.jpg"
+                alt="Video Placeholder"
+                fill
+                style={{ objectFit: 'cover', zIndex: 1 }}
+                className="absolute inset-0 w-full h-full object-cover"
+                priority
+              />
+            )}
+            <video
+              ref={videoRef}
+              autoPlay
+              loop={false}
+              muted
+              playsInline
+              preload="auto"
+              className="hero-video"
+              onEnded={handleVideoEnd}
+              onTimeUpdate={handleTimeUpdate}
+              onLoadedData={() => setVideoLoaded(true)}
+              poster="/hero-bg.jpg"
+              style={{ zIndex: 2 }}
+            >
+              <source src={src} type="video/mp4" />
+              <Image src="/hero-bg.jpg" alt="Background fallback" width={1920} height={1080} style={{ width: '100%', height: 'auto' }} />
+            </video>
+          </>
+        ) : (
+          <Image
+            src="/hero-bg.jpg"
+            alt="Video Placeholder"
+            fill
+            style={{ objectFit: 'cover' }}
+            className="absolute inset-0 w-full h-full object-cover"
+            priority
+          />
+        )}
         <div className="hero-overlay" />
-
         {/* Horizontal Progress Bars */}
         <div className="absolute bottom-8 right-8 flex flex-row items-end z-10 space-x-2">
           {videos.map((_, idx) => (

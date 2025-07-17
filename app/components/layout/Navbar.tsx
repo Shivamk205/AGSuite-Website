@@ -670,6 +670,7 @@ const Navbar = () => {
                   openDropdown === 'Solutions' && (
                     <div
                       className="hidden lg:block fixed left-0 right-0 top-20 w-screen bg-gradient-to-br from-gray-50 via-gray-50 to-gray-50 backdrop-blur-md shadow-lg border-b border-gray-200 transition-all duration-300 z-50"
+                      style={{ maxHeight: '80vh', overflowY: 'auto', borderRadius: '0 0 2rem 2rem' }}
                     >
                       <div className="max-w-[1600px] mx-auto px-5 sm:px-10 md:px-12 lg:px-5 py-8 relative">
                         {/* Close Button */}
@@ -737,14 +738,14 @@ const Navbar = () => {
                             </div>
                           </div>
                           {/* Content Area */}
-                          <div className="flex-1 min-h-[500px]">
+                          <div className="flex-1 min-h-[400px] pb-4">
                             {/* NetSuite Content - Show when clicked */}
                             <div className={`transition-all duration-300 ${openMegaMenu === 'NETSUITE' ? 'opacity-100 visible' : 'opacity-0 invisible absolute'}`}>
                               <div className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                   {item.children.find(child => child.label === 'NETSUITE')?.megaMenu?.categories.map((category, catIndex) => (
-                                    <div key={catIndex} className="space-y-2">
-                                      <h4 className="text-md font-semibold text-red-600 uppercase tracking-wide border-b border-red-200 pb-1">
+                                    <div key={catIndex} className="space-y-2 bg-white rounded-xl shadow-md p-4 border border-gray-100 hover:shadow-lg transition-shadow duration-200">
+                                      <h4 className="text-sm font-semibold text-red-600 uppercase tracking-wide border-b border-red-200 pb-1">
                                         {category.title}
                                       </h4>
                                       <ul className="space-y-1">
@@ -768,10 +769,10 @@ const Navbar = () => {
                             {/* Zoho Content - Show when selected */}
                             <div className={`transition-all duration-300 ${openMegaMenu === 'ZOHO' ? 'opacity-100 visible' : 'opacity-0 invisible absolute'}`}>
                               <div className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                                   {item.children.find(child => child.label === 'ZOHO')?.megaMenu?.categories.map((category, catIndex) => (
-                                    <div key={catIndex} className="space-y-2">
-                                      <h4 className="text-md font-semibold text-red-600 uppercase tracking-wide border-b border-red-200 pb-1">
+                                    <div key={catIndex} className="space-y-2 bg-white rounded-xl shadow-md p-2 border border-gray-100 hover:shadow-lg transition-shadow duration-200">
+                                      <h4 className="text-sm font-semibold text-red-600 uppercase tracking-wide border-b border-red-200 pb-1">
                                         {category.title}
                                       </h4>
                                       <ul className="space-y-1">
@@ -795,7 +796,7 @@ const Navbar = () => {
                             {/* Default Content - Show NetSuite by default */}
                             <div className={`transition-all duration-300 ${!openMegaMenu ? 'opacity-100 visible' : 'opacity-0 invisible absolute'}`}>
                               <div className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                   {item.children.find(child => child.label === 'NETSUITE')?.megaMenu?.categories.map((category, catIndex) => (
                                     <div key={catIndex} className="space-y-2">
                                       <h4 className="text-xs font-semibold text-red-600 uppercase tracking-wide border-b border-red-200 pb-1">

@@ -1,5 +1,3 @@
-'use client';
-
 const CtaSection = () => {
   return (
     <section className="py-24">
